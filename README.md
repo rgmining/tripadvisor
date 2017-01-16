@@ -1,11 +1,12 @@
-# Trip Advisor Dataset
+# Trip Advisor Dataset Loader
 [![GPLv3](https://img.shields.io/badge/license-GPLv3-blue.svg)](https://www.gnu.org/copyleft/gpl.html)
 [![Release](https://img.shields.io/badge/release-0.5.0-brightgreen.svg)](https://github.com/rgmining/tripadvisor/releases/tag/v0.5.0)
 [![PyPi](https://img.shields.io/badge/pypi-0.5.0-brightgreen.svg)](https://pypi.python.org/pypi/rgmining-tripadvisor-dataset)
 
-A loader for the [Trip Advisor dataset](http://times.cs.uiuc.edu/~wang296/Data/)
-provided by [Dr. Wang](http://www.cs.virginia.edu/~hw5x/)
-for the [Review Graph Mining project](https://github.com/rgmining).
+For the [Review Graph Mining project](https://github.com/rgmining),
+this package provides a loader of the
+[Trip Advisor dataset](http://times.cs.uiuc.edu/~wang296/Data/)
+provided by [Dr. Wang](http://www.cs.virginia.edu/~hw5x/).
 
 
 ## Installation
@@ -21,9 +22,11 @@ the [original web site](http://times.cs.uiuc.edu/~wang296/Data/).
 
 ## Usage
 This package provides module `tripadvisor` and this module provides `load` function.
-The `load` function takes a graph object defined in other [Review Graph Mining project](https://github.com/rgmining).
+The `load` function takes a graph object defined in [Review Graph Mining project](https://github.com/rgmining).
 
-For example, the following code constructs a graph object provides the [FRAUDAR](http://www.kdd.org/kdd2016/subtopic/view/fraudar-bounding-graph-fraud-in-the-face-of-camouflage) algorithm, loads the Trip Advisor dataset,
+For example, the following code constructs a graph object provides the
+[FRAUDAR](http://www.kdd.org/kdd2016/subtopic/view/fraudar-bounding-graph-fraud-in-the-face-of-camouflage) algorithm,
+loads the Trip Advisor dataset,
 runs the algorithm, and then outputs names of anomalous reviewers.
 Since this dataset consists of huge reviews, loading may take long time.
 
