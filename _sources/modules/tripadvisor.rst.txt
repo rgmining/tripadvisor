@@ -1,0 +1,7 @@
+tripadvisor module
+==================
+
+.. automodule:: tripadvisor
+    :members:
+    :undoc-members:
+    :show-inheritance:
