@@ -33,13 +33,10 @@ class CustomInstallData(distutils.command.install_data.install_data):
         """Before executing run command, download data files.
         """
         for f in self.data_files:
-            print f
             if not isinstance(f, tuple):
                 continue
             for i, u in enumerate(f[1]):
                 f[1][i] = urllib.urlretrieve(u)[0]
-                print u, "->", f[1][i]
-
         return distutils.command.install_data.install_data.run(self)
 
 
