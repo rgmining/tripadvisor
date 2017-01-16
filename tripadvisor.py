@@ -19,12 +19,26 @@
 # along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 #
 # pylint: disable=invalid-name
+"""This module provides a loading function of the Trip Advisor Dataset.
+
+It also a helper function, :meth:`print_state`, to output a state of a graph
+object.
+To use both fuctions, the graph object must implement the
+:ref:`graph interface <dataset-io:graph-interface>`.
+"""
 from __future__ import division
 from contextlib import closing
+import datetime
 import json
 from os.path import exists, join
+import site
 import sys
 import tarfile
+
+
+_DATE_FORMAT = "%B %d, %Y"
+"""Data format in the dataset.
+"""
 
 
 def _files(tar):
@@ -38,7 +52,10 @@ def _files(tar):
 
 
 def load(graph):
-    """Load the Trip Advisor dataset.
+    """Load the Trip Advisor dataset to a given graph object.
+
+    The graph object must implement the
+    :ref:`graph interface <dataset-io:graph-interface>`.
 
     Args:
       graph: an instance of bipartite graph.
@@ -49,6 +66,8 @@ def load(graph):
     path = "TripAdvisorJson.tar.bz2"
     if not exists(path):
         path = join(sys.prefix, "rgmining","data", path)
+    if not exists(path):
+        path = join(site.getuserbase(), "rgmining","data", path)
 
     R = {}  # Reviewers dict.
     with tarfile.open(path) as tar:
@@ -66,9 +85,16 @@ def load(graph):
                     name = r["ReviewID"]
                     score = float(r["Ratings"]["Overall"]) / 5.
 
+                    try:
+                        date = datetime.datetime.strptime(
+                            r["Date"], _DATE_FORMAT).strftime("%Y%m%d")
+                    except ValueError:
+                        date = None
+                    print date
+
                     if name not in R:
                         R[name] = graph.new_reviewer(name=name)
-                    graph.add_review(R[name], product, score)
+                    graph.add_review(R[name], product, score, date)
 
     return graph
 
@@ -77,8 +103,10 @@ def print_state(g, i, output=sys.stdout):
     """Print a current state of a given graph.
 
     This method outputs a current of a graph as a set of json objects.
-    Graph objects must have two properties; `reviewers` and `products`.
+    Graph objects must have two properties, `reviewers` and `products`.
     Those properties returns a set of reviewers and products respectively.
+    See the :ref:`graph interface <dataset-io:graph-interface>`
+    for more information.
 
     In this output format, each line represents a reviewer or product object.
 

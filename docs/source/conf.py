@@ -362,4 +362,7 @@ texinfo_documents = [
 
 
 # Example configuration for intersphinx: refer to the Python standard library.
-intersphinx_mapping = {'https://docs.python.org/': None}
+intersphinx_mapping = {
+    "dataset-io": ("https://rgmining.github.io/dataset-io", None),
+    'python': ('https://docs.python.org/3.4', None),
+}
