@@ -1,7 +1,11 @@
 # Trip Advisor Dataset Loader
 [![GPLv3](https://img.shields.io/badge/license-GPLv3-blue.svg)](https://www.gnu.org/copyleft/gpl.html)
-[![Release](https://img.shields.io/badge/release-0.5.2-brightgreen.svg)](https://github.com/rgmining/tripadvisor/releases/tag/v0.5.2)
-[![PyPi](https://img.shields.io/badge/pypi-0.5.2-brightgreen.svg)](https://pypi.python.org/pypi/rgmining-tripadvisor-dataset)
+[![Build Status](https://travis-ci.org/rgmining/tripadvisor.svg?branch=master)](https://travis-ci.org/rgmining/tripadvisor)
+[![wercker status](https://app.wercker.com/status/815b060cc2fa911215674efdc1078d50/s/master "wercker status")](https://app.wercker.com/project/byKey/815b060cc2fa911215674efdc1078d50)
+[![Release](https://img.shields.io/badge/release-0.5.3-brightgreen.svg)](https://github.com/rgmining/tripadvisor/releases/tag/v0.5.3)
+[![PyPi](https://img.shields.io/badge/pypi-0.5.3-brightgreen.svg)](https://pypi.python.org/pypi/rgmining-tripadvisor-dataset)
+
+[![Logo](https://rgmining.github.io/tripadvisor/_static/image.png)](https://rgmining.github.io/tripadvisor/)
 
 For the [Review Graph Mining project](https://github.com/rgmining),
 this package provides a loader of the
