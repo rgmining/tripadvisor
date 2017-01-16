@@ -19,7 +19,7 @@
 # You should have received a copy of the GNU General Public License
 # along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 #
-"""Evaluate a review graph mining algorithm with the synthetic dataset.
+"""Evaluate a review graph mining algorithm with the Trip Advisor dataset.
 """
 # pylint: disable=invalid-name
 from __future__ import absolute_import, division
