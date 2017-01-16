@@ -1,7 +1,7 @@
 box: jkawamoto/ghp-box
 build:
   steps:
-    - scirpt:
+    - script:
         name: Noop
         code: echo "No build script"
 doc:
