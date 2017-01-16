@@ -20,9 +20,21 @@
 #
 # pylint: disable=invalid-name
 from __future__ import division
-import glob
+from contextlib import closing
 import json
+from os.path import exists, join
 import sys
+import tarfile
+
+
+def _files(tar):
+    """Yields a file in the tar file.
+    """
+    info = tar.next()
+    while info:
+        if info.isfile():
+            yield info
+        info = tar.next()
 
 
 def load(graph):
@@ -34,22 +46,29 @@ def load(graph):
     Returns:
       The graph instance *graph*.
     """
+    path = "TripAdvisorJson.tar.bz2"
+    if not exists(path):
+        path = join(sys.prefix, "rgmining","data", path)
+
     R = {}  # Reviewers dict.
-    for path in glob.iglob("data/*.json"):
+    with tarfile.open(path) as tar:
 
-        with open(path) as fp:
-            obj = json.load(fp)
+        for info in _files(tar):
 
-            target = obj["HotelInfo"]["HotelID"]
-            product = graph.new_product(name=target)
+            with closing(tar.extractfile(info)) as fp:
 
-            for r in obj["Reviews"]:
-                name = r["ReviewID"]
-                score = float(r["Ratings"]["Overall"]) / 5.
+                obj = json.load(fp)
 
-                if name not in R:
-                    R[name] = graph.new_reviewer(name=name)
-                graph.add_review(R[name], product, score)
+                target = obj["HotelInfo"]["HotelID"]
+                product = graph.new_product(name=target)
+
+                for r in obj["Reviews"]:
+                    name = r["ReviewID"]
+                    score = float(r["Ratings"]["Overall"]) / 5.
+
+                    if name not in R:
+                        R[name] = graph.new_reviewer(name=name)
+                    graph.add_review(R[name], product, score)
 
     return graph
 
