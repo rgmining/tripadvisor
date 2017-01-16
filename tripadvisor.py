@@ -90,7 +90,6 @@ def load(graph):
                             r["Date"], _DATE_FORMAT).strftime("%Y%m%d")
                     except ValueError:
                         date = None
-                    print date
 
                     if name not in R:
                         R[name] = graph.new_reviewer(name=name)
