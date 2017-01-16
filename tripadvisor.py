@@ -18,19 +18,21 @@
 # You should have received a copy of the GNU General Public License
 # along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 #
+# pylint: disable=invalid-name
 from __future__ import division
 import glob
 import json
+import sys
 
 
-def load(g):
+def load(graph):
     """Load the Trip Advisor dataset.
 
     Args:
-      g: an instance of bipartite graph.
+      graph: an instance of bipartite graph.
 
     Returns:
-      The graph instance *g*.
+      The graph instance *graph*.
     """
     R = {}  # Reviewers dict.
     for path in glob.iglob("data/*.json"):
@@ -39,14 +41,71 @@ def load(g):
             obj = json.load(fp)
 
             target = obj["HotelInfo"]["HotelID"]
-            product = g.new_product(name=target)
+            product = graph.new_product(name=target)
 
             for r in obj["Reviews"]:
                 name = r["ReviewID"]
                 score = float(r["Ratings"]["Overall"]) / 5.
 
                 if name not in R:
-                    R[name] = g.new_reviewer(name=name)
-                g.add_review(R[name], product, score)
+                    R[name] = graph.new_reviewer(name=name)
+                graph.add_review(R[name], product, score)
 
-    return g
+    return graph
+
+
+def print_state(g, i, output=sys.stdout):
+    """Print a current state of a given graph.
+
+    This method outputs a current of a graph as a set of json objects.
+    Graph objects must have two properties; `reviewers` and `products`.
+    Those properties returns a set of reviewers and products respectively.
+
+    In this output format, each line represents a reviewer or product object.
+
+    Reviewer objects are defined as ::
+
+        {
+           "iteration": <the iteration number given as i>
+           "reviewer":
+           {
+              "reviewer_id": <Reviewer's ID>
+              "score": <Anomalous score of the reviewer>
+           }
+        }
+
+    Product objects are defined as ::
+
+        {
+           "iteration": <the iteration number given as i>
+           "reviewer":
+           {
+              "product_id": <Product's ID>
+              "sumarry": <Summary of the reviews for the product>
+           }
+        }
+
+    Args:
+      g: Graph instance.
+      i: Iteration number.
+      output: A writable object (default: sys.stdout).
+    """
+    for r in g.reviewers:
+        json.dump({
+            "iteration": i,
+            "reviewer": {
+                "reviewer_id": r.name,
+                "score": r.anomalous_score
+            }
+        }, output)
+        output.write("\n")
+
+    for p in g.products:
+        json.dump({
+            "iteration": i,
+            "product": {
+                "product_id": p.name,
+                "summary": float(str(p.summary))
+            }
+        }, output)
+        output.write("\n")
