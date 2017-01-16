@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 #
-# synthetic-evaluation
+# sample.py
 #
 # Copyright (c) 2017 Junpei Kawamoto
 #
