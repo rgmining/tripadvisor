@@ -19,6 +19,10 @@ $ pip install --upgrade rgmining-tripadvisor-dataset
 Note that this installation will download a big data file from
 the [original web site](http://times.cs.uiuc.edu/~wang296/Data/).
 
+This package uses `bz2` internally.
+If your python doesn't have that package (try `import bz2`),
+rebuild python before installation.
+
 
 ## Usage
 This package provides module `tripadvisor` and this module provides `load` function.
