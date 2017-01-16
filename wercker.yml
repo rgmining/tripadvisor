@@ -1,6 +1,11 @@
 box: jkawamoto/ghp-box
 build:
   steps:
+    - scirpt:
+      name: Noop
+      code: echo "No build script"
+doc:
+  steps:
     - script:
         name: Prepare submodules
         code: |-
