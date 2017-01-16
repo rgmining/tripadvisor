@@ -30,7 +30,9 @@ rebuild python before installation.
 
 ## Usage
 This package provides module `tripadvisor` and this module provides `load` function.
-The `load` function takes a graph object defined in [Review Graph Mining project](https://github.com/rgmining).
+The `load` function takes a graph object which implements
+the [graph interface](https://rgmining.github.io/dataset-io/modules/dataset_io.html#graph-interface)
+defined in [Review Graph Mining project](https://github.com/rgmining).
 
 For example, the following code constructs a graph object provides the
 [FRAUDAR](http://www.kdd.org/kdd2016/subtopic/view/fraudar-bounding-graph-fraud-in-the-face-of-camouflage) algorithm,
