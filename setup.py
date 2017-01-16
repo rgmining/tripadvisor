@@ -22,6 +22,7 @@
 """Package information about a synthetic dataset for review graph mining.
 """
 import distutils.command.install_data
+from os import path
 from setuptools import setup
 import urllib
 
@@ -36,7 +37,7 @@ class CustomInstallData(distutils.command.install_data.install_data):
             if not isinstance(f, tuple):
                 continue
             for i, u in enumerate(f[1]):
-                f[1][i] = urllib.urlretrieve(u)[0]
+                f[1][i] = urllib.urlretrieve(u, path.basename(u))[0]
         return distutils.command.install_data.install_data.run(self)
 
 
@@ -55,7 +56,7 @@ def _load_requires_from_file(filepath):
 
 setup(
     name="rgmining-tripadvisor-dataset",
-    version="0.5.0",
+    version="0.5.1",
     author="Junpei Kawamoto",
     author_email="kawamoto.junpei@gmail.com",
     description="Trip Advisor dataset for Review Graph Mining Project",
