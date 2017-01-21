@@ -9,7 +9,7 @@ Trip Advisor Dataset Loader
 
    <div class="addthis_inline_share_toolbox"></div>
 
-For the `Review Graph Mining project <https://github.com/rgmining>`_,
+For the :ref:`Review Graph Mining project <project:top>`,
 this package provides a loader of the
 `Trip Advisor dataset <http://times.cs.uiuc.edu/~wang296/Data/>`_
 provided by `Dr. Wang <http://www.cs.virginia.edu/~hw5x/>`_.
@@ -33,10 +33,11 @@ rebuild python before installation.
 
 Usage
 ------
-This package provides module `tripadvisor` and this module provides `load` function.
+This package provides module :mod:`tripadvisor`
+and this module provides :meth:`load() <tripadvisor.load>` function.
 The `load` function takes a graph object which implements
 the :ref:`graph interface <dataset-io:graph-interface>`
-defined in `Review Graph Mining project <https://github.com/rgmining>`_.
+defined in :ref:`Review Graph Mining project <project:top>`.
 
 
 For example, the following code constructs a graph object provides the
@@ -68,8 +69,8 @@ Since this dataset consists of huge reviews, loading may take long time.
   # The number of reviewers judged as anomalous: -> 147.
   len([r for r in graph.reviewers if r.anomalous_score == 1])
 
-Note that you may need to install the FRAUDAR algorithm for the Review Mining Project
-by
+Note that you may need to install the
+:ref:`FRAUDAR algorithm for the Review Mining Project <fraudar:top>` by
 
 .. code-block:: bash
 
@@ -88,7 +89,7 @@ API Reference
 License
 ---------
 This software is released under The GNU General Public License Version 3,
-see COPYING for more detail.
+see `COPYING <https://github.com/rgmining/tripadvisor/blob/master/COPYING>`_ for more detail.
 
 The authors of the Trip Advisor dataset, which this software imports, requires to
 cite the following papers when you publish research papers using this package:
