@@ -24,6 +24,8 @@
 import distutils.command.install_data
 from os import path
 from setuptools import setup
+import site
+import sys
 import urllib
 
 
@@ -37,7 +39,14 @@ class CustomInstallData(distutils.command.install_data.install_data):
             if not isinstance(f, tuple):
                 continue
             for i, u in enumerate(f[1]):
-                f[1][i] = urllib.urlretrieve(u, path.basename(u))[0]
+                base = path.basename(u)
+                f[1][i] = path.join(sys.prefix, f[0], base)
+                if not path.exists(f[1][i]):
+                    f[1][i] = path.join(sys.prefix, "local", f[0], base)
+                if not path.exists(f[1][i]):
+                    f[1][i] = path.join(site.getuserbase(), f[0], base)
+                if not path.exists(f[1][i]):
+                    f[1][i] = urllib.urlretrieve(u, base)[0]
         return distutils.command.install_data.install_data.run(self)
 
 

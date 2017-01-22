@@ -67,6 +67,8 @@ def load(graph):
     if not exists(path):
         path = join(sys.prefix, "rgmining","data", path)
     if not exists(path):
+        path = join(sys.prefix, "local", "rgmining","data", path)
+    if not exists(path):
         path = join(site.getuserbase(), "rgmining","data", path)
 
     R = {}  # Reviewers dict.
