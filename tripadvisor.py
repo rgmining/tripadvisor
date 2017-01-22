@@ -63,13 +63,14 @@ def load(graph):
     Returns:
       The graph instance *graph*.
     """
-    path = "TripAdvisorJson.tar.bz2"
+    base = "TripAdvisorJson.tar.bz2"
+    path = join(".", base)
     if not exists(path):
-        path = join(sys.prefix, "rgmining","data", path)
+        path = join(sys.prefix, "rgmining","data", base)
     if not exists(path):
-        path = join(sys.prefix, "local", "rgmining","data", path)
+        path = join(sys.prefix, "local", "rgmining","data", base)
     if not exists(path):
-        path = join(site.getuserbase(), "rgmining","data", path)
+        path = join(site.getuserbase(), "rgmining","data", base)
 
     R = {}  # Reviewers dict.
     with tarfile.open(path) as tar:
