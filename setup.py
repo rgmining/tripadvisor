@@ -65,7 +65,7 @@ def _load_requires_from_file(filepath):
 
 setup(
     name="rgmining-tripadvisor-dataset",
-    version="0.5.4",
+    version="0.5.5",
     author="Junpei Kawamoto",
     author_email="kawamoto.junpei@gmail.com",
     description="Trip Advisor dataset for Review Graph Mining Project",
