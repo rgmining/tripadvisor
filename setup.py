@@ -29,6 +29,12 @@ import sys
 import urllib
 
 
+def read(fname):
+    """Read a file.
+    """
+    return open(path.join(path.dirname(__file__), fname)).read()
+
+
 class CustomInstallData(distutils.command.install_data.install_data):
     """Custom install data command to download data files from the web.
     """
@@ -50,7 +56,7 @@ class CustomInstallData(distutils.command.install_data.install_data):
         return distutils.command.install_data.install_data.run(self)
 
 
-def _load_requires_from_file(filepath):
+def load_requires_from_file(filepath):
     """Read a package list from a given file path.
 
     Args:
@@ -65,15 +71,19 @@ def _load_requires_from_file(filepath):
 
 setup(
     name="rgmining-tripadvisor-dataset",
-    version="0.5.5",
+    use_scm_version=True,
     author="Junpei Kawamoto",
     author_email="kawamoto.junpei@gmail.com",
     description="Trip Advisor dataset for Review Graph Mining Project",
+    long_description=read("README.rst"),
     url="https://github.com/rgmining/tripadvisor",
     py_modules=[
         "tripadvisor"
     ],
-    install_requires=_load_requires_from_file("requirements.txt"),
+    install_requires=load_requires_from_file("requirements.txt"),
+    setup_requires=[
+        "setuptools_scm"
+    ],
     data_files=[(
         "rgmining/data",
         ["http://times.cs.uiuc.edu/~wang296/Data/LARA/TripAdvisor/TripAdvisorJson.tar.bz2"]
