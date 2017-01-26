@@ -4,6 +4,7 @@
 [![wercker status](https://app.wercker.com/status/815b060cc2fa911215674efdc1078d50/s/master "wercker status")](https://app.wercker.com/project/byKey/815b060cc2fa911215674efdc1078d50)
 [![Release](https://img.shields.io/badge/release-0.5.5-brightgreen.svg)](https://github.com/rgmining/tripadvisor/releases/tag/v0.5.5)
 [![PyPi](https://img.shields.io/badge/pypi-0.5.5-brightgreen.svg)](https://pypi.python.org/pypi/rgmining-tripadvisor-dataset)
+[![Japanese](https://img.shields.io/badge/qiita-%E6%97%A5%E6%9C%AC%E8%AA%9E-brightgreen.svg)](http://qiita.com/jkawamoto/items/86c687d85efb783bcd7d)
 
 [![Logo](https://rgmining.github.io/tripadvisor/_static/image.png)](https://rgmining.github.io/tripadvisor/)
 
