@@ -23,10 +23,10 @@
 """
 import distutils.command.install_data
 from os import path
-from setuptools import setup
 import site
 import sys
 import urllib
+from setuptools import setup
 
 
 def read(fname):
@@ -38,6 +38,7 @@ def read(fname):
 class CustomInstallData(distutils.command.install_data.install_data):
     """Custom install data command to download data files from the web.
     """
+
     def run(self):
         """Before executing run command, download data files.
         """
@@ -99,6 +100,8 @@ setup(
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
         "Natural Language :: English",
         "Programming Language :: Python",
+        "Programming Language :: Python :: 2.7",
+        "Programming Language :: Python :: 3.6",
         "Topic :: Software Development :: Libraries",
         "Topic :: Scientific/Engineering :: Information Analysis"
     ]
