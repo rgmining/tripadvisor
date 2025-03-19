@@ -1,0 +1,42 @@
+[build-system]
+build-backend = "poetry.core.masonry.api"
+
+requires = [ "poetry-core>=2" ]
+
+[project]
+name = "rgmining-tripadvisor-dataset"
+version = "0.5.6"
+description = "Trip Advisor dataset for Review Graph Mining Project"
+readme = "README.rst"
+keywords = [ "dataset", "mining", "review" ]
+license = { text = "GPL-3.0-only" }
+authors = [
+  { name = "Junpei Kawamoto", email = "kawamoto.junpei@gmail.com" },
+]
+requires-python = ">=3.11"
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+  "Natural Language :: English",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Scientific/Engineering :: Information Analysis",
+  "Topic :: Software Development :: Libraries",
+]
+
+dependencies = [
+]
+
+urls.documentation = "https://rgmining.github.io/tripadvisor/"
+urls.homepage = "https://rgmining.github.io/tripadvisor/"
+urls.repository = "https://github.com/rgmining/tripadvisor"
+
+[tool.poetry]
+packages = [
+  { include = "tripadvisor" },
+]
+include = [ "COPYING", "LICENSE-2.0" ]

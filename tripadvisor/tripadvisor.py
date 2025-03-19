@@ -64,7 +64,7 @@ def load(graph):
       The graph instance *graph*.
     """
     base = "TripAdvisorJson.tar.bz2"
-    path = join(".", base)
+    path = join("..", base)
     if not exists(path):
         path = join(sys.prefix, "rgmining","data", base)
     if not exists(path):
