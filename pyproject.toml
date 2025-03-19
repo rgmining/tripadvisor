@@ -40,3 +40,6 @@ packages = [
   { include = "tripadvisor" },
 ]
 include = [ "COPYING", "LICENSE-2.0" ]
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.5"

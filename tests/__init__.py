@@ -1,7 +1,7 @@
 #
 # __init__.py
 #
-# Copyright (c) 2017 Junpei Kawamoto
+# Copyright (c) 2017-2025 Junpei Kawamoto
 #
 # This file is part of rgmining-tripadvisor-dataset.
 #
@@ -18,5 +18,3 @@
 # You should have received a copy of the GNU General Public License
 # along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 #
-from __future__ import absolute_import
-from tests.test_suite import suite
