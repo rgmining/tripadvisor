@@ -56,6 +56,14 @@ pre-commit = "^4.1"
 pre-commit-uv = "^4.1.4"
 ruff = "^0.11.0"
 
+[tool.poetry.group.docs]
+optional = true
+
+[tool.poetry.group.docs.dependencies]
+sphinx = "^8.2.3"
+sphinx-rtd-theme = "^3.0.2"
+sphinx-autobuild = "^2024.10.3"
+
 [tool.ruff]
 target-version = "py311"
 line-length = 120
