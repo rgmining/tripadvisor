@@ -29,23 +29,20 @@ classifiers = [
 ]
 
 dependencies = [
-    "platformdirs (>=4.3.6,<5.0.0)",
-    "requests (>=2.32.3,<3.0.0)",
-    "tqdm (>=4.67.1,<5.0.0)"
+  "platformdirs>=4.3.6,<5",
+  "requests>=2.32.3,<3",
+  "tqdm>=4.67.1,<5",
 ]
 
+optional-dependencies.cli = [
+  "click>=8",
+  "rgmining-fraud-eagle>=0.10.4",
+  "rgmining-fraudar>=0.7.4",
+  "rgmining-rsd>=0.3.4",
+]
 urls.documentation = "https://rgmining.github.io/tripadvisor/"
 urls.homepage = "https://rgmining.github.io/tripadvisor/"
 urls.repository = "https://github.com/rgmining/tripadvisor"
-
-[project.optional-dependencies]
-cli = [
-    "click>=8",
-    "rgmining-rsd>=0.3.4",
-    "rgmining-fraud-eagle>=0.10.4",
-    "rgmining-fraudar>=0.7.4"
-]
-
 
 [tool.poetry]
 packages = [
@@ -55,3 +52,10 @@ include = [ "COPYING", "LICENSE-2.0" ]
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.5"
+pre-commit = "^4.1"
+pre-commit-uv = "^4.1.4"
+ruff = "^0.11.0"
+
+[tool.ruff]
+target-version = "py311"
+line-length = 120

@@ -31,9 +31,7 @@ from tqdm import tqdm
 
 LOGGER = logging.getLogger(__name__)
 
-DATASET_URL = (
-    "https://www.cs.virginia.edu/~hw5x/Data/LARA/TripAdvisor/TripAdvisorJson.tar.bz2"
-)
+DATASET_URL = "https://www.cs.virginia.edu/~hw5x/Data/LARA/TripAdvisor/TripAdvisorJson.tar.bz2"
 FILENAME = "TripAdvisorJson.tar.bz2"
 
 _DATE_FORMAT = "%B %d, %Y"
@@ -54,13 +52,9 @@ def load(graph):
       The graph instance *graph*.
     """
 
-    data_path = user_cache_path(
-        "rgmining-tripadvisor-dataset", ensure_exists=True
-    ).joinpath(FILENAME)
+    data_path = user_cache_path("rgmining-tripadvisor-dataset", ensure_exists=True).joinpath(FILENAME)
     if not data_path.exists():
-        LOGGER.info(
-            "Not found review data locally, downloading them from %s...", DATASET_URL
-        )
+        LOGGER.info("Not found review data locally, downloading them from %s...", DATASET_URL)
 
         res = requests.get(DATASET_URL, stream=True)
         res.raise_for_status()
@@ -88,9 +82,7 @@ def load(graph):
                     score = float(r["Ratings"]["Overall"]) / 5.0
 
                     try:
-                        date = datetime.datetime.strptime(
-                            r["Date"], _DATE_FORMAT
-                        ).strftime("%Y%m%d")
+                        date = datetime.datetime.strptime(r["Date"], _DATE_FORMAT).strftime("%Y%m%d")
                     except ValueError:
                         date = None
 

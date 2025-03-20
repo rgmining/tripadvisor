@@ -39,7 +39,6 @@ ALGORITHMS = {}
 try:
     import ria
 
-
     def ignore_args(func):
         """Returns a wrapped function which ignore given arguments."""
 
@@ -48,7 +47,6 @@ try:
             return func()
 
         return _
-
 
     ALGORITHMS["ria"] = ria.ria_graph
     ALGORITHMS["one"] = ignore_args(ria.one_graph)
@@ -61,10 +59,8 @@ except ImportError:
 try:
     import rsd
 
-
     def create_rsd_graph(theta=0.1, **_kwargs):
         return rsd.ReviewGraph(theta)
-
 
     ALGORITHMS["rsd"] = create_rsd_graph
 except ImportError:
@@ -74,10 +70,8 @@ except ImportError:
 try:
     import fraud_eagle
 
-
     def create_feagle_graph(epsilon=0.1, **_kwargs):
         return fraud_eagle.ReviewGraph(epsilon)
-
 
     ALGORITHMS["feagle"] = create_feagle_graph
 except ImportError:
@@ -87,20 +81,16 @@ except ImportError:
 try:
     import fraudar
 
-
     def create_fraudar_graph(nblock=1):
         """Create a review graph defined in Fraudar package."""
         return fraudar.ReviewGraph(int(nblock))
-
 
     ALGORITHMS["fraudar"] = create_fraudar_graph
 except ImportError:
     LOGGER.info("rgmining-fraudar is not installed.")
 
 
-def run(
-        method: str, loop: int, threshold: float, output: TextIO, param: tuple[str] = ()
-):
+def run(method: str, loop: int, threshold: float, output: TextIO, param: tuple[str] = ()):
     """Run a given algorithm with the Trip Advisor dataset.
 
     Runs a given algorithm and outputs anomalous scores and summaries after
@@ -157,9 +147,7 @@ def run(
     type=click.File("w"),
     help="file path to store results. [Default: stdout]",
 )
-@click.option(
-    "--param", multiple=True, help="key and value pair which are connected with '='."
-)
+@click.option("--param", multiple=True, help="key and value pair which are connected with '='.")
 def main(method, loop, threshold, output, param) -> None:
     """Evaluate a review graph mining algorithm with the Trip Advisor dataset."""
     logging.basicConfig(level=logging.INFO, stream=sys.stderr)
