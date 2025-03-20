@@ -38,31 +38,31 @@ class Product:
 
 
 class Graph:
-    reviewers: dict[str, Reviewer]
-    products: dict[str, Product]
+    _reviewers: dict[str, Reviewer]
+    _products: dict[str, Product]
     reviews: defaultdict[str, dict[str, float]]
 
     def __init__(self) -> None:
-        self.reviewers = dict()
-        self.products = dict()
+        self._reviewers = dict()
+        self._products = dict()
         self.reviews = defaultdict(dict)
 
     def new_reviewer(self, name: str) -> Reviewer:
         """Create a new reviewer."""
-        if name in self.reviewers:
+        if name in self._reviewers:
             raise ValueError("The given reviewer already exists:", name)
 
         r = Reviewer(name)
-        self.reviewers[name] = r
+        self._reviewers[name] = r
         return r
 
     def new_product(self, name: str) -> Product:
         """Create a new product."""
-        if name in self.products:
+        if name in self._products:
             raise ValueError("The given product already exists:", name)
 
         p = Product(name)
-        self.products[name] = p
+        self._products[name] = p
         return p
 
     def add_review(
@@ -73,11 +73,21 @@ class Graph:
         _date: Any | None = None,
     ) -> None:
         """Add a review."""
-        if reviewer.name not in self.reviewers:
+        if reviewer.name not in self._reviewers:
             raise ValueError("The given reviewer doesn't exist:", reviewer)
-        if product.name not in self.products:
+        if product.name not in self._products:
             raise ValueError("The given product doesn't exist:", product)
         self.reviews[reviewer.name][product.name] = score
+
+    @property
+    def reviewers(self) -> list[Reviewer]:
+        """Get a list of reviewers."""
+        return list(self._reviewers.values())
+
+    @property
+    def products(self) -> list[Product]:
+        """Get a list of products."""
+        return list(self._products.values())
 
 
 @pytest.fixture
