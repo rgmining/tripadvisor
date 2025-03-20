@@ -23,6 +23,8 @@
 import logging
 import sys
 from typing import TextIO
+from importlib.metadata import version
+
 
 import click
 
@@ -148,6 +150,7 @@ def run(method: str, loop: int, threshold: float, output: TextIO, param: tuple[s
     help="file path to store results. [Default: stdout]",
 )
 @click.option("--param", multiple=True, help="key and value pair which are connected with '='.")
+@click.version_option(version("rgmining-tripadvisor-dataset"))
 def main(method, loop, threshold, output, param) -> None:
     """Evaluate a review graph mining algorithm with the Trip Advisor dataset."""
     logging.basicConfig(level=logging.INFO, stream=sys.stderr)
