@@ -1,5 +1,5 @@
 #
-# __init__.py
+# test_loader.py
 #
 # Copyright (c) 2017-2025 Junpei Kawamoto
 #
@@ -18,10 +18,23 @@
 # You should have received a copy of the GNU General Public License
 # along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 #
-"""This library provides a loading function of the Trip Advisor Dataset."""
+import os
 
-from typing import Final
+import pytest
 
-from tripadvisor.loader import load
+import tripadvisor
+from tests.conftest import Graph
 
-__all__: Final = ["load"]
+
+@pytest.mark.skipif(os.getenv("CI") == "true", reason="Skipping this test on CI")
+def test_load(graph: Graph) -> None:
+    """Test load method."""
+    assert tripadvisor.load(graph) == graph
+
+    assert len(graph.reviews) > 0
+    assert len(graph.products) > 0
+    assert len(graph.reviewers) > 0
+
+    for pmap in graph.reviews.values():
+        for score in pmap.values():
+            assert 0 <= score <= 1

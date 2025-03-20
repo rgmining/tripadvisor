@@ -29,6 +29,9 @@ classifiers = [
 ]
 
 dependencies = [
+    "platformdirs (>=4.3.6,<5.0.0)",
+    "requests (>=2.32.3,<3.0.0)",
+    "tqdm (>=4.67.1,<5.0.0)"
 ]
 
 urls.documentation = "https://rgmining.github.io/tripadvisor/"
