@@ -20,9 +20,38 @@
 #
 import json
 import sys
+from typing import Protocol, TextIO, Any, TypeVar
 
 
-def print_state(g, i, output=sys.stdout):
+class Reviewer(Protocol):
+    @property
+    def name(self) -> str: ...
+
+    @property
+    def anomalous_score(self) -> float: ...
+
+
+class Product(Protocol):
+    @property
+    def name(self) -> str: ...
+
+    @property
+    def summary(self) -> Any: ...
+
+
+RT = TypeVar("RT", bound=Reviewer)
+PT = TypeVar("PT", bound=Product)
+
+
+class Graph(Protocol[RT, PT]):
+    @property
+    def reviewers(self) -> list[RT]: ...
+
+    @property
+    def products(self) -> list[PT]: ...
+
+
+def print_state(g: Graph, i: int | str, output: TextIO = sys.stdout) -> None:
     """Print a current state of a given graph.
 
     This method outputs a current of a graph as a set of json objects.

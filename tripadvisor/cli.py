@@ -22,18 +22,23 @@
 
 import logging
 import sys
-from typing import TextIO
+from typing import TextIO, Callable, Any, Protocol
 from importlib.metadata import version
 
 
 import click
 
 from tripadvisor import load
-from tripadvisor.debug import print_state
+from tripadvisor.debug import print_state, Graph as PrintableGraph
 
 LOGGER = logging.getLogger(__name__)
 
-ALGORITHMS = {}
+
+class Graph(PrintableGraph, Protocol):
+    def update(self) -> float: ...
+
+
+ALGORITHMS = dict[str, Callable[..., Graph]]()
 """Dictionary of graph loading functions associated with installed algorithms.
 """
 
@@ -41,10 +46,10 @@ ALGORITHMS = {}
 try:
     import ria
 
-    def ignore_args(func):
+    def ignore_args(func: Callable) -> Callable:
         """Returns a wrapped function which ignore given arguments."""
 
-        def _(*_args):
+        def _(*_args: tuple[Any]) -> Any:
             """The function body."""
             return func()
 
@@ -61,7 +66,7 @@ except ImportError:
 try:
     import rsd
 
-    def create_rsd_graph(theta=0.1, **_kwargs):
+    def create_rsd_graph(theta: float = 0.1, **_kwargs: Any) -> rsd.ReviewGraph:
         return rsd.ReviewGraph(theta)
 
     ALGORITHMS["rsd"] = create_rsd_graph
@@ -72,7 +77,7 @@ except ImportError:
 try:
     import fraud_eagle
 
-    def create_feagle_graph(epsilon=0.1, **_kwargs):
+    def create_feagle_graph(epsilon: float = 0.1, **_kwargs: Any) -> fraud_eagle.ReviewGraph:
         return fraud_eagle.ReviewGraph(epsilon)
 
     ALGORITHMS["feagle"] = create_feagle_graph
@@ -83,7 +88,7 @@ except ImportError:
 try:
     import fraudar
 
-    def create_fraudar_graph(nblock=1):
+    def create_fraudar_graph(nblock: int = 1, **_kwargs: Any) -> fraudar.ReviewGraph:
         """Create a review graph defined in Fraudar package."""
         return fraudar.ReviewGraph(int(nblock))
 
@@ -92,7 +97,7 @@ except ImportError:
     LOGGER.info("rgmining-fraudar is not installed.")
 
 
-def run(method: str, loop: int, threshold: float, output: TextIO, param: tuple[str] = ()):
+def run(method: str, loop: int, threshold: float, output: TextIO, param: tuple[str]) -> None:
     """Run a given algorithm with the Trip Advisor dataset.
 
     Runs a given algorithm and outputs anomalous scores and summaries after
@@ -151,7 +156,7 @@ def run(method: str, loop: int, threshold: float, output: TextIO, param: tuple[s
 )
 @click.option("--param", multiple=True, help="key and value pair which are connected with '='.")
 @click.version_option(version("rgmining-tripadvisor-dataset"))
-def main(method, loop, threshold, output, param) -> None:
+def main(method: str, loop: int, threshold: float, output: TextIO, param: tuple[str]) -> None:
     """Evaluate a review graph mining algorithm with the Trip Advisor dataset."""
     logging.basicConfig(level=logging.INFO, stream=sys.stderr)
     run(method, loop, threshold, output, param)
