@@ -93,7 +93,10 @@ def print_state(g: Graph, i: int | str, output: TextIO = sys.stdout) -> None:
         json.dump(
             {
                 "iteration": i,
-                "reviewer": {"reviewer_id": r.name, "score": r.anomalous_score},
+                "reviewer": {
+                    "reviewer_id": r.name,
+                    "score": r.anomalous_score,
+                },
             },
             output,
         )
@@ -103,7 +106,10 @@ def print_state(g: Graph, i: int | str, output: TextIO = sys.stdout) -> None:
         json.dump(
             {
                 "iteration": i,
-                "product": {"product_id": p.name, "summary": float(str(p.summary))},
+                "product": {
+                    "product_id": p.name,
+                    "summary": float(str(p.summary)),
+                },
             },
             output,
         )

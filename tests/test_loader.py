@@ -26,7 +26,9 @@ import tripadvisor
 from tests.conftest import Graph
 
 
-@pytest.mark.skipif(os.getenv("CI") == "true", reason="Skipping this test on CI")
+@pytest.mark.skipif(
+    os.getenv("CI") == "true", reason="Skipping this test on CI"
+)
 def test_load(graph: Graph) -> None:
     """Test load method."""
     assert tripadvisor.load(graph) == graph

@@ -107,7 +107,9 @@ except ImportError:
     LOGGER.info("rgmining-fraudar is not installed.")
 
 
-def run(method: str, loop: int, threshold: float, output: TextIO, param: tuple[str]) -> None:
+def run(
+    method: str, loop: int, threshold: float, output: TextIO, param: tuple[str]
+) -> None:
     """Run a given algorithm with the Trip Advisor dataset.
 
     Runs a given algorithm and outputs anomalous scores and summaries after
@@ -126,7 +128,9 @@ def run(method: str, loop: int, threshold: float, output: TextIO, param: tuple[s
       output: writable object where the output will be written.
       param: list of key and value pair which are connected with "=".
     """
-    kwargs = {key: float(value) for key, value in [v.split("=") for v in param]}
+    kwargs = {
+        key: float(value) for key, value in [v.split("=") for v in param]
+    }
 
     graph = ALGORITHMS[method](**kwargs)
     load(graph)
@@ -170,7 +174,9 @@ def run(method: str, loop: int, threshold: float, output: TextIO, param: tuple[s
     help="key and value pair of parameters corresponding to the chosen algorithm, connected with '='.",
 )
 @click.version_option(version("rgmining-tripadvisor-dataset"))
-def main(method: str, loop: int, threshold: float, output: TextIO, param: tuple[str]) -> None:
+def main(
+    method: str, loop: int, threshold: float, output: TextIO, param: tuple[str]
+) -> None:
     """Evaluate a review graph mining algorithm with the Trip Advisor dataset."""
     logging.basicConfig(level=logging.INFO, stream=sys.stderr)
     run(method, loop, threshold, output, param)

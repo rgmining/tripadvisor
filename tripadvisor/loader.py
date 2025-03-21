@@ -45,17 +45,26 @@ PT = TypeVar("PT")
 
 
 class Graph(Protocol[RT, PT]):
-    def new_reviewer(self, name: str, anomalous_score: float | None = None) -> RT: ...
+    def new_reviewer(
+        self, name: str, anomalous_score: float | None = None
+    ) -> RT: ...
 
     def new_product(self, name: str) -> PT: ...
 
-    def add_review(self, reviewer: RT, product: PT, score: float, time: int | None = None) -> Any: ...
+    def add_review(
+        self, reviewer: RT, product: PT, score: float, time: int | None = None
+    ) -> Any: ...
 
 
 def reviews() -> Iterator[dict[str, Any]]:
-    data_path = user_cache_path("rgmining-tripadvisor-dataset", ensure_exists=True).joinpath(FILENAME)
+    data_path = user_cache_path(
+        "rgmining-tripadvisor-dataset", ensure_exists=True
+    ).joinpath(FILENAME)
     if not data_path.exists():
-        LOGGER.info("Not found review data locally, downloading them from %s...", DATASET_URL)
+        LOGGER.info(
+            "Not found review data locally, downloading them from %s...",
+            DATASET_URL,
+        )
 
         res = requests.get(DATASET_URL, stream=True)
         res.raise_for_status()
@@ -98,7 +107,11 @@ def load(graph: Graph) -> Graph:
             score = float(r["Ratings"]["Overall"]) / 5.0
 
             try:
-                date = int(datetime.strptime(r["Date"], _DATE_FORMAT).strftime("%Y%m%d"))
+                date = int(
+                    datetime.strptime(r["Date"], _DATE_FORMAT).strftime(
+                        "%Y%m%d"
+                    )
+                )
             except ValueError:
                 date = None
 
