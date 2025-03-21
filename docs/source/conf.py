@@ -1,5 +1,4 @@
-# -*- coding: utf-8 -*-
-# pylint: skip-file
+# mypy: ignore-errors
 #
 # Review Graph Mining Trip Advisor Dataset documentation build configuration file.
 #
@@ -11,16 +10,13 @@
 #
 # All configuration values have a default; values that are commented out
 # serve to show the default.
-import sys
-from os import path
+from datetime import datetime
 from importlib.metadata import version as get_version
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-abspath = path.abspath(path.dirname(__file__))
-sys.path.append(path.join(abspath, "../../"))
 
 # -- General configuration ------------------------------------------------
 
@@ -58,7 +54,7 @@ master_doc = "index"
 
 # General information about the project.
 project = "Trip Advisor Dataset Loader"
-copyright = "2017-2025, Junpei Kawamoto"
+copyright = f"2017-{datetime.now().year}, Junpei Kawamoto"
 author = "Junpei Kawamoto"
 
 # The version info for the project you're documenting, acts as replacement for

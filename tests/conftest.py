@@ -20,7 +20,6 @@
 #
 from collections import defaultdict
 from dataclasses import dataclass
-from typing import Any
 
 import pytest
 
@@ -47,7 +46,7 @@ class Graph:
         self._products = dict()
         self.reviews = defaultdict(dict)
 
-    def new_reviewer(self, name: str) -> Reviewer:
+    def new_reviewer(self, name: str, score: float | None = None) -> Reviewer:
         """Create a new reviewer."""
         if name in self._reviewers:
             raise ValueError("The given reviewer already exists:", name)
@@ -70,7 +69,7 @@ class Graph:
         reviewer: Reviewer,
         product: Product,
         score: float,
-        _date: Any | None = None,
+        _date: int | None = None,
     ) -> None:
         """Add a review."""
         if reviewer.name not in self._reviewers:
@@ -91,5 +90,5 @@ class Graph:
 
 
 @pytest.fixture
-def graph():
+def graph() -> Graph:
     return Graph()

@@ -26,6 +26,12 @@ repos:
     hooks:
       - id: poetry-check
       - id: poetry-lock
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.15.0
+    hooks:
+      - id: mypy
+        args: []
+        additional_dependencies: ["platformdirs>=4.3.6,<5", "rgmining-fraud-eagle>=0.10.5", "rgmining-fraudar>=0.7.5", "rgmining-rsd>=0.3.5", "click>=8", "pytest>=8.3.5", "types-requests>=2.32.0.20250306", "types-tqdm>=4.67.0.20250319"]
   - repo: local
     hooks:
       - id: pytest
