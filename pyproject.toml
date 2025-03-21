@@ -1,0 +1,101 @@
+[build-system]
+build-backend = "poetry.core.masonry.api"
+
+requires = [ "poetry-core>=2" ]
+
+[project]
+name = "rgmining-tripadvisor-dataset"
+version = "0.5.6"
+description = "Trip Advisor dataset for Review Graph Mining Project"
+readme = "README.rst"
+keywords = [ "dataset", "mining", "review" ]
+license = { text = "GPL-3.0-only" }
+authors = [
+  { name = "Junpei Kawamoto", email = "kawamoto.junpei@gmail.com" },
+]
+requires-python = ">=3.11"
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+  "Natural Language :: English",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Scientific/Engineering :: Information Analysis",
+  "Topic :: Software Development :: Libraries",
+]
+
+dependencies = [
+  "platformdirs>=4.3.6,<5",
+  "requests>=2.32.3,<3",
+  "tqdm>=4.67.1,<5",
+]
+
+optional-dependencies.cli = [
+  "click>=8",
+  "rgmining-fraud-eagle>=0.10.5",
+  "rgmining-fraudar>=0.7.5",
+  "rgmining-rsd>=0.3.5",
+]
+urls.documentation = "https://rgmining.github.io/tripadvisor/"
+urls.homepage = "https://rgmining.github.io/tripadvisor/"
+urls.repository = "https://github.com/rgmining/tripadvisor"
+
+[tool.poetry]
+packages = [
+  { include = "tripadvisor" },
+]
+include = [ "COPYING", "LICENSE-2.0" ]
+
+[tool.poetry.group.dev.dependencies]
+bump-my-version = "^1.0.2"
+pytest = "^8.3.5"
+pre-commit = "^4.1"
+pre-commit-uv = "^4.1.4"
+ruff = "^0.11.0"
+mypy = "^1.15.0"
+types-requests = "^2.32.0.20250306"
+types-tqdm = "^4.67.0.20250319"
+
+[tool.poetry.group.docs]
+optional = true
+
+[tool.poetry.group.docs.dependencies]
+sphinx = "^8.2.3"
+sphinx-rtd-theme = "^3.0.2"
+sphinx-autobuild = "^2024.10.3"
+
+[tool.ruff]
+target-version = "py311"
+line-length = 79
+
+[tool.bumpversion]
+current_version = "0.5.6"
+commit = true
+pre_commit_hooks = [
+  "poetry lock",
+  "git add poetry.lock",
+]
+
+[[tool.bumpversion.files]]
+filename = "pyproject.toml"
+search = 'version = "{current_version}"'
+replace = 'version = "{new_version}"'
+
+[[tool.bumpversion.files]]
+filename = "README.rst"
+
+[tool.mypy]
+files = "tripadvisor/*.py,tests/**/*.py"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[[tool.mypy.overrides]]
+module = [
+  "ria",
+]
+ignore_missing_imports = true

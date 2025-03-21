@@ -18,3 +18,10 @@
 # You should have received a copy of the GNU General Public License
 # along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 #
+"""This library provides a loading function of the Trip Advisor Dataset."""
+
+from typing import Final
+
+from tripadvisor.loader import load, reviews
+
+__all__: Final = ["load", "reviews"]

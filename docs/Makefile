@@ -50,7 +50,7 @@ clean:
 
 .PHONY: sphinx-apidoc
 sphinx-apidoc:
-	sphinx-apidoc -f -o source/modules -M ".." "../setup.py" "../sample.py" "../tests" 
+	sphinx-apidoc -f -o source/modules -M ".." "../setup.py" "../sample.py" "../tests"
 	rm source/modules/modules.rst
 
 .PHONY: sphinx-apidoc-test

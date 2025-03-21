@@ -1,5 +1,5 @@
 #
-# __init__.py
+# __main__.py
 #
 # Copyright (c) 2017-2025 Junpei Kawamoto
 #
@@ -18,3 +18,7 @@
 # You should have received a copy of the GNU General Public License
 # along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 #
+
+from tripadvisor.cli import main
+
+main()
