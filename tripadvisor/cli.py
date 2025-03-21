@@ -22,19 +22,18 @@
 
 import logging
 import sys
-from typing import TextIO, Callable, Any, Protocol
 from importlib.metadata import version
-
+from typing import TextIO, Callable, Any, Protocol
 
 import click
 
-from tripadvisor import load
 from tripadvisor.debug import print_state, Graph as PrintableGraph
+from tripadvisor.loader import load, Graph as LoadableGraph
 
 LOGGER = logging.getLogger(__name__)
 
 
-class Graph(PrintableGraph, Protocol):
+class Graph(PrintableGraph, LoadableGraph, Protocol):
     def update(self) -> float: ...
 
 
@@ -66,8 +65,12 @@ except ImportError:
 try:
     import rsd
 
-    def create_rsd_graph(theta: float = 0.1, **_kwargs: Any) -> rsd.ReviewGraph:
-        return rsd.ReviewGraph(theta)
+    def create_rsd_graph(**kwargs: float) -> rsd.ReviewGraph:
+        """Create a review graph defined in RSD package."""
+        if "theta" not in kwargs:
+            LOGGER.warning("Parameter 'theta' is not specified. Set to 0.1.")
+            kwargs["theta"] = 0.1
+        return rsd.ReviewGraph(kwargs["theta"])
 
     ALGORITHMS["rsd"] = create_rsd_graph
 except ImportError:
@@ -77,8 +80,12 @@ except ImportError:
 try:
     import fraud_eagle
 
-    def create_feagle_graph(epsilon: float = 0.1, **_kwargs: Any) -> fraud_eagle.ReviewGraph:
-        return fraud_eagle.ReviewGraph(epsilon)
+    def create_feagle_graph(**kwargs: float) -> fraud_eagle.ReviewGraph:
+        """Create a review graph defined in fraud eagle package."""
+        if "epsilon" not in kwargs:
+            LOGGER.warning("Parameter 'epsilon' is not specified. Set to 0.1.")
+            kwargs["epsilon"] = 0.1
+        return fraud_eagle.ReviewGraph(kwargs["epsilon"])
 
     ALGORITHMS["feagle"] = create_feagle_graph
 except ImportError:
@@ -88,9 +95,12 @@ except ImportError:
 try:
     import fraudar
 
-    def create_fraudar_graph(nblock: int = 1, **_kwargs: Any) -> fraudar.ReviewGraph:
+    def create_fraudar_graph(**kwargs: float) -> fraudar.ReviewGraph:
         """Create a review graph defined in Fraudar package."""
-        return fraudar.ReviewGraph(int(nblock))
+        if "nblock" not in kwargs:
+            LOGGER.warning("Parameter 'nblock' is not specified. Set to 1.")
+            kwargs["nblock"] = 1.0
+        return fraudar.ReviewGraph(int(kwargs["nblock"]))
 
     ALGORITHMS["fraudar"] = create_fraudar_graph
 except ImportError:
@@ -154,7 +164,11 @@ def run(method: str, loop: int, threshold: float, output: TextIO, param: tuple[s
     type=click.File("w"),
     help="file path to store results. [Default: stdout]",
 )
-@click.option("--param", multiple=True, help="key and value pair which are connected with '='.")
+@click.option(
+    "--param",
+    multiple=True,
+    help="key and value pair of parameters corresponding to the chosen algorithm, connected with '='.",
+)
 @click.version_option(version("rgmining-tripadvisor-dataset"))
 def main(method: str, loop: int, threshold: float, output: TextIO, param: tuple[str]) -> None:
     """Evaluate a review graph mining algorithm with the Trip Advisor dataset."""

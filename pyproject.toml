@@ -36,9 +36,9 @@ dependencies = [
 
 optional-dependencies.cli = [
   "click>=8",
-  "rgmining-fraud-eagle>=0.10.4",
-  "rgmining-fraudar>=0.7.4",
-  "rgmining-rsd>=0.3.4",
+  "rgmining-fraud-eagle>=0.10.5",
+  "rgmining-fraudar>=0.7.5",
+  "rgmining-rsd>=0.3.5",
 ]
 urls.documentation = "https://rgmining.github.io/tripadvisor/"
 urls.homepage = "https://rgmining.github.io/tripadvisor/"
@@ -57,6 +57,8 @@ pre-commit = "^4.1"
 pre-commit-uv = "^4.1.4"
 ruff = "^0.11.0"
 mypy = "^1.15.0"
+types-requests = "^2.32.0.20250306"
+types-tqdm = "^4.67.0.20250319"
 
 [tool.poetry.group.docs]
 optional = true

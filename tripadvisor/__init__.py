@@ -22,6 +22,6 @@
 
 from typing import Final
 
-from tripadvisor.loader import load
+from tripadvisor.loader import load, reviews
 
-__all__: Final = ["load"]
+__all__: Final = ["load", "reviews"]

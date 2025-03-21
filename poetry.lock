@@ -1114,15 +1114,15 @@ use-chardet-on-py3 = ["chardet (>=3.0.2,<6)"]
 
 [[package]]
 name = "rgmining-fraud-eagle"
-version = "0.10.4"
+version = "0.10.5"
 description = "An implementation of Fraud Eagle algorithm"
 optional = true
 python-versions = ">=3.11"
 groups = ["main"]
 markers = "extra == \"cli\""
 files = [
-    {file = "rgmining_fraud_eagle-0.10.4-py3-none-any.whl", hash = "sha256:adebd5c8df2b89fa9a0d39550a164c201ac0606fa8f6bf195b2a3f6a163f0f51"},
-    {file = "rgmining_fraud_eagle-0.10.4.tar.gz", hash = "sha256:267604a6244f1edebd91bc5108b0d3cb7ece34b6efb5a8fbdd3fa3a93c027f65"},
+    {file = "rgmining_fraud_eagle-0.10.5-py3-none-any.whl", hash = "sha256:9b95dc78d41401b1dfb983400783f00a4e467be953780325d19433cb535ceb9b"},
+    {file = "rgmining_fraud_eagle-0.10.5.tar.gz", hash = "sha256:f4a962fc6352486b73f775d4b7996c025ac1d1f1f0e0c8394b2eecab69eff636"},
 ]
 
 [package.dependencies]
@@ -1131,15 +1131,15 @@ numpy = ">=2.2"
 
 [[package]]
 name = "rgmining-fraudar"
-version = "0.7.4"
+version = "0.7.5"
 description = "A wrapper of Fraudar algorithm for Review graph mining project"
 optional = true
 python-versions = ">=3.11"
 groups = ["main"]
 markers = "extra == \"cli\""
 files = [
-    {file = "rgmining_fraudar-0.7.4-py3-none-any.whl", hash = "sha256:2f385bb6ea83d1a424b79cd856bfe9bbcc6ef2f50a52e9009d3d53fbb97ddc55"},
-    {file = "rgmining_fraudar-0.7.4.tar.gz", hash = "sha256:83cee6cdd78f6567803df16cc1c91498a18f3d1eabb6c2101677c6743623b7b6"},
+    {file = "rgmining_fraudar-0.7.5-py3-none-any.whl", hash = "sha256:7e53b82c5158358356caf995293c7be803d75be5c4a3b184fa6637ce1e1392c9"},
+    {file = "rgmining_fraudar-0.7.5.tar.gz", hash = "sha256:282967d0db278f485818fef272380a4c09b7ef722006e445f2d0dc31034f393e"},
 ]
 
 [package.dependencies]
@@ -1151,15 +1151,15 @@ sample = ["click (>=8)", "rgmining-synthetic-dataset (>=0.9)"]
 
 [[package]]
 name = "rgmining-rsd"
-version = "0.3.4"
+version = "0.3.5"
 description = "An implementation of Review Spammer Detection algorithm"
 optional = true
 python-versions = ">=3.11"
 groups = ["main"]
 markers = "extra == \"cli\""
 files = [
-    {file = "rgmining_rsd-0.3.4-py3-none-any.whl", hash = "sha256:87e7ee2adf36e016b45091bb3fd9cc3e4937bf7babc0cd747d37ba0836cea794"},
-    {file = "rgmining_rsd-0.3.4.tar.gz", hash = "sha256:53dc4e8b5231af98f3cbff04df54f9fa2fcd66682226fa732bc2a6a64846e549"},
+    {file = "rgmining_rsd-0.3.5-py3-none-any.whl", hash = "sha256:87b75567f3a3fad1d55c0eb91783edabf9659acc80568f7e4565157e6e98b598"},
+    {file = "rgmining_rsd-0.3.5.tar.gz", hash = "sha256:0520f3638bfced7209c75ad270a4d3341570738c049f60ead57b8478ffd1ed16"},
 ]
 
 [package.dependencies]
@@ -1655,6 +1655,36 @@ slack = ["slack-sdk"]
 telegram = ["requests"]
 
 [[package]]
+name = "types-requests"
+version = "2.32.0.20250306"
+description = "Typing stubs for requests"
+optional = false
+python-versions = ">=3.9"
+groups = ["dev"]
+files = [
+    {file = "types_requests-2.32.0.20250306-py3-none-any.whl", hash = "sha256:25f2cbb5c8710b2022f8bbee7b2b66f319ef14aeea2f35d80f18c9dbf3b60a0b"},
+    {file = "types_requests-2.32.0.20250306.tar.gz", hash = "sha256:0962352694ec5b2f95fda877ee60a159abdf84a0fc6fdace599f20acb41a03d1"},
+]
+
+[package.dependencies]
+urllib3 = ">=2"
+
+[[package]]
+name = "types-tqdm"
+version = "4.67.0.20250319"
+description = "Typing stubs for tqdm"
+optional = false
+python-versions = ">=3.9"
+groups = ["dev"]
+files = [
+    {file = "types_tqdm-4.67.0.20250319-py3-none-any.whl", hash = "sha256:8705ef0dd431586e5ea6e010e15b73389b09bcc18186e8c1f530a14dfaa30e09"},
+    {file = "types_tqdm-4.67.0.20250319.tar.gz", hash = "sha256:ae947a64bd8d7ed7b7d2b7369df05f9181f847ec2828fdc8a2deb0bb8701adaa"},
+]
+
+[package.dependencies]
+types-requests = "*"
+
+[[package]]
 name = "typing-extensions"
 version = "4.12.2"
 description = "Backported and Experimental Type Hints for Python 3.8+"
@@ -1673,7 +1703,7 @@ version = "2.3.0"
 description = "HTTP library with thread-safe connection pooling, file post, and more."
 optional = false
 python-versions = ">=3.9"
-groups = ["main", "docs"]
+groups = ["main", "dev", "docs"]
 files = [
     {file = "urllib3-2.3.0-py3-none-any.whl", hash = "sha256:1cee9ad369867bfdbbb48b7dd50374c0967a0bb7710050facf0dd6911440e3df"},
     {file = "urllib3-2.3.0.tar.gz", hash = "sha256:f8c5449b3cf0861679ce7e0503c7b44b5ec981bec0d1d3795a07f1ba96f0204d"},
@@ -1949,4 +1979,4 @@ cli = ["click", "rgmining-fraud-eagle", "rgmining-fraudar", "rgmining-rsd"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11"
-content-hash = "a5802553b8d22384983653138e75d2887da226a44ed53a8e81d42d1f59ae3d10"
+content-hash = "ca3d05cc2dfa74f7e6aed7261d52032a85e57448b54082efa60a0f47504ffbe8"
