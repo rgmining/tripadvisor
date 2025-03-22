@@ -1,7 +1,7 @@
 Trip Advisor Dataset Loader
 ===========================
 
-|GPLv3| |Build Status| |wercker status| |Release| |PyPi| |Japanese|
+|GPLv3| |Build Status| |Release| |PyPi| |Japanese|
 
 |Logo|
 
@@ -88,10 +88,8 @@ using this package:
 
 .. |GPLv3| image:: https://img.shields.io/badge/license-GPLv3-blue.svg
    :target: https://www.gnu.org/copyleft/gpl.html
-.. |Build Status| image:: https://travis-ci.org/rgmining/tripadvisor.svg?branch=master
-   :target: https://travis-ci.org/rgmining/tripadvisor
-.. |wercker status| image:: https://app.wercker.com/status/815b060cc2fa911215674efdc1078d50/s/master
-   :target: https://app.wercker.com/project/byKey/815b060cc2fa911215674efdc1078d50
+.. |Build Status| image:: https://github.com/rgmining/tripadvisor/actions/workflows/python-lib.yaml/badge.svg
+   :target: https://github.com/rgmining/tripadvisor/actions/workflows/python-lib.yaml
 .. |Release| image:: https://img.shields.io/badge/release-0.5.6-brightgreen.svg
    :target: https://github.com/rgmining/tripadvisor/releases/tag/v0.5.6
 .. |PyPi| image:: https://img.shields.io/badge/pypi-0.5.6-brightgreen.svg
