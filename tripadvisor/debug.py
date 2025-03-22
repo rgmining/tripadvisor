@@ -18,25 +18,35 @@
 # You should have received a copy of the GNU General Public License
 # along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 #
+"""This module provides a debug function for the Trip Advisor Dataset."""
+
 import json
 import sys
 from typing import Protocol, TextIO, Any, TypeVar
 
 
 class Reviewer(Protocol):
-    @property
-    def name(self) -> str: ...
+    """A protocol for a reviewer object."""
 
     @property
-    def anomalous_score(self) -> float: ...
+    def name(self) -> str:
+        """The reviewer's ID.'"""
+
+    @property
+    def anomalous_score(self) -> float:
+        """The anomalous score of the reviewer."""
 
 
 class Product(Protocol):
-    @property
-    def name(self) -> str: ...
+    """A protocol for a product object."""
 
     @property
-    def summary(self) -> Any: ...
+    def name(self) -> str:
+        """The product's ID.'"""
+
+    @property
+    def summary(self) -> Any:
+        """The summary of the reviews for the product."""
 
 
 RT = TypeVar("RT", bound=Reviewer)
@@ -44,11 +54,15 @@ PT = TypeVar("PT", bound=Product)
 
 
 class Graph(Protocol[RT, PT]):
-    @property
-    def reviewers(self) -> list[RT]: ...
+    """A protocol for a graph object."""
 
     @property
-    def products(self) -> list[PT]: ...
+    def reviewers(self) -> list[RT]:
+        """A list of reviewers."""
+
+    @property
+    def products(self) -> list[PT]:
+        """A list of products."""
 
 
 def print_state(g: Graph, i: int | str, output: TextIO = sys.stdout) -> None:

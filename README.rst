@@ -7,7 +7,7 @@ Trip Advisor Dataset Loader
 
 For the `Review Graph Mining project <https://github.com/rgmining>`__,
 this package provides a loader of the `Trip Advisor
-dataset <http://times.cs.uiuc.edu/~wang296/Data/>`__ provided by `Dr.
+dataset <https://www.cs.virginia.edu/~hw5x/dataset.html>`__ provided by `Dr.
 Wang <http://www.cs.virginia.edu/~hw5x/>`__.
 
 Installation
@@ -23,11 +23,7 @@ Usage
 -----
 
 This package provides module ``tripadvisor`` and this module provides
-``load`` function. The ``load`` function takes a graph object which
-implements the `graph
-interface <https://rgmining.github.io/dataset-io/modules/dataset_io.html#graph-interface>`__
-defined in `Review Graph Mining
-project <https://github.com/rgmining>`__.
+``load`` function. The ``load`` function takes a graph object.
 
 For example, the following code constructs a graph object provides the
 `FRAUDAR <http://www.kdd.org/kdd2016/subtopic/view/fraudar-bounding-graph-fraud-in-the-face-of-camouflage>`__
@@ -73,16 +69,16 @@ using this package:
 
 -  `Hongning Wang <http://www.cs.virginia.edu/~hw5x/>`__, `Yue
    Lu <https://www.linkedin.com/in/yue-lu-80a6a549>`__, and `ChengXiang
-   Zhai <http://czhai.cs.illinois.edu/>`__, "`Latent Aspect Rating
+   Zhai <http://czhai.cs.illinois.edu/>`__, "Latent Aspect Rating
    Analysis without Aspect Keyword
-   Supervision <http://times.cs.uiuc.edu/~wang296/paper/p618.pdf>`__,"
+   Supervision,"
    In Proc. of the 17th ACM SIGKDD Conference on Knowledge Discovery and
    Data Mining (KDD'2011), pp.618-626, 2011;
 -  `Hongning Wang <http://www.cs.virginia.edu/~hw5x/>`__, `Yue
    Lu <https://www.linkedin.com/in/yue-lu-80a6a549>`__, and `Chengxiang
-   Zhai <http://czhai.cs.illinois.edu/>`__, "`Latent Aspect Rating
+   Zhai <http://czhai.cs.illinois.edu/>`__, "Latent Aspect Rating
    Analysis on Review Text Data: A Rating Regression
-   Approach <http://sifaka.cs.uiuc.edu/~wang296/paper/rp166f-wang.pdf>`__,"
+   Approach,"
    In Proc. of the 16th ACM SIGKDD Conference on Knowledge Discovery and
    Data Mining (KDD'2010), pp.783-792, 2010.
 
