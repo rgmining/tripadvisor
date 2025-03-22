@@ -18,12 +18,30 @@
 # You should have received a copy of the GNU General Public License
 # along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 #
-"""Evaluate a review graph mining algorithm with the Trip Advisor dataset."""
+"""Evaluate a review graph mining algorithm with the Trip Advisor dataset.
+
+Usage: python -m tripadvisor [OPTIONS]
+
+  Evaluate a review graph mining algorithm with the Trip Advisor dataset.
+
+Options:
+  -m, --method [rsd|feagle|fraudar]
+                                  name of algorithm.  [required]
+  --loop INTEGER                  number of iteration.
+  --threshold FLOAT               threshold.
+  --output FILENAME               file path to store results. [Default:
+                                  stdout]
+  --param TEXT                    key and value a pair of parameters
+                                  corresponding to the chosen algorithm,
+                                  connected with '='.
+  --version                       Show the version and exit.
+  --help                          Show this message and exit.
+"""
 
 import logging
 import sys
 from importlib.metadata import version
-from typing import TextIO, Callable, Any, Protocol
+from typing import TextIO, Callable, Any, Protocol, Final
 
 import click
 
@@ -180,3 +198,6 @@ def main(
     """Evaluate a review graph mining algorithm with the Trip Advisor dataset."""
     logging.basicConfig(level=logging.INFO, stream=sys.stderr)
     run(method, loop, threshold, output, param)
+
+
+__all__: Final = ["main"]

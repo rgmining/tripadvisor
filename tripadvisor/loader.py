@@ -18,6 +18,7 @@
 # You should have received a copy of the GNU General Public License
 # along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 #
+"""This module provides a function to load the Trip Advisor dataset."""
 
 import json
 import logging
@@ -45,18 +46,52 @@ PT = TypeVar("PT")
 
 
 class Graph(Protocol[RT, PT]):
+    """A protocol class representing a graph object.
+
+    This protocol defines the methods required for a class to be used
+    as the graph object in the `load` function. The graph object facilitates
+    creating reviewers, products, and adding reviews.
+    """
+
     def new_reviewer(
         self, name: str, anomalous_score: float | None = None
-    ) -> RT: ...
+    ) -> RT:
+        """Creates a new reviewer node in the graph.
 
-    def new_product(self, name: str) -> PT: ...
+        Args:
+            name: The name of the reviewer.
+            anomalous_score: Optional. The initial anomalous score for the reviewer.
+
+        Returns:
+            The created reviewer node.
+        """
+
+    def new_product(self, name: str) -> PT:
+        """Creates a new product node in the graph.
+
+        Args:
+            name: The name of the product.
+
+        Returns:
+            The created product node.
+        """
 
     def add_review(
         self, reviewer: RT, product: PT, score: float, time: int | None = None
-    ) -> Any: ...
+    ) -> Any:
+        """Adds a review connecting a reviewer to a product with a score and time.
+
+        Args:
+            reviewer: The reviewer node.
+            product: The product node.
+            score: The score of the review.
+            time: Optional. The time of the review.
+        """
 
 
 def reviews() -> Iterator[dict[str, Any]]:
+    """Load the Trip Advisor dataset."""
+
     data_path = user_cache_path(
         "rgmining-tripadvisor-dataset", ensure_exists=True
     ).joinpath(FILENAME)
@@ -88,11 +123,8 @@ def reviews() -> Iterator[dict[str, Any]]:
 def load(graph: Graph) -> Graph:
     """Load the Trip Advisor dataset to a given graph object.
 
-    The graph object must implement the
-    :ref:`graph interface <dataset-io:graph-interface>`.
-
     Args:
-      graph: an instance of bipartite graph.
+      graph: an instance of review graph.
 
     Returns:
       The graph instance *graph*.

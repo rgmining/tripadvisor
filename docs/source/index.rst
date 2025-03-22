@@ -11,7 +11,7 @@ Trip Advisor Dataset Loader
 
 For the :ref:`Review Graph Mining project <project:top>`,
 this package provides a loader of the
-`Trip Advisor dataset <http://times.cs.uiuc.edu/~wang296/Data/>`_
+`Trip Advisor dataset <https://www.cs.virginia.edu/~hw5x/dataset.html>`_
 provided by `Dr. Wang <http://www.cs.virginia.edu/~hw5x/>`_.
 
 
@@ -29,8 +29,7 @@ Usage
 This package provides module :mod:`tripadvisor`
 and this module provides :meth:`load() <tripadvisor.load>` function.
 The ``load`` function takes a graph object which implements
-the :ref:`graph interface <dataset-io:graph-interface>`
-defined in :ref:`Review Graph Mining project <project:top>`.
+the :ref:`Graph protocol <tripadvisor.loader.Graph>`.
 
 
 For example, the following code constructs a graph object provides the
@@ -88,11 +87,11 @@ The authors of the Trip Advisor dataset, which this software imports, requires t
 cite the following papers when you publish research papers using this package:
 
 * `Hongning Wang`_, `Yue Lu`_, and `ChengXiang Zhai`_,
-  "|pdf| `Latent Aspect Rating Analysis without Aspect Keyword Supervision <http://times.cs.uiuc.edu/~wang296/paper/p618.pdf>`_,"
+  "Latent Aspect Rating Analysis without Aspect Keyword Supervision,"
   In Proc. of the 17th ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD'2011),
   pp.618-626, 2011;
 * `Hongning Wang`_, `Yue Lu`_, and `Chengxiang Zhai`_,
-  "|pdf| `Latent Aspect Rating Analysis on Review Text Data: A Rating Regression Approach <http://sifaka.cs.uiuc.edu/~wang296/paper/rp166f-wang.pdf>`_,"
+  "Latent Aspect Rating Analysis on Review Text Data: A Rating Regression Approach,"
   In Proc. of the 16th ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD'2010),
   pp.783-792, 2010.
 
