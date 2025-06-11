@@ -86,9 +86,9 @@ using this package:
    :target: https://www.gnu.org/copyleft/gpl.html
 .. |Build Status| image:: https://github.com/rgmining/tripadvisor/actions/workflows/python-lib.yaml/badge.svg
    :target: https://github.com/rgmining/tripadvisor/actions/workflows/python-lib.yaml
-.. |Release| image:: https://img.shields.io/badge/release-0.6.0-brightgreen.svg
-   :target: https://github.com/rgmining/tripadvisor/releases/tag/v0.6.0
-.. |PyPi| image:: https://img.shields.io/badge/pypi-0.6.0-brightgreen.svg
+.. |Release| image:: https://img.shields.io/badge/release-0.6.1-brightgreen.svg
+   :target: https://github.com/rgmining/tripadvisor/releases/tag/v0.6.1
+.. |PyPi| image:: https://img.shields.io/badge/pypi-0.6.1-brightgreen.svg
    :target: https://pypi.python.org/pypi/rgmining-tripadvisor-dataset
 .. |Japanese| image:: https://img.shields.io/badge/qiita-%E6%97%A5%E6%9C%AC%E8%AA%9E-brightgreen.svg
    :target: http://qiita.com/jkawamoto/items/86c687d85efb783bcd7d
