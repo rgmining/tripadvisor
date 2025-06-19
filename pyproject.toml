@@ -5,7 +5,7 @@ requires = [ "poetry-core>=2" ]
 
 [project]
 name = "rgmining-tripadvisor-dataset"
-version = "0.6.1"
+version = "0.6.2"
 description = "Trip Advisor dataset for Review Graph Mining Project"
 readme = "README.rst"
 keywords = [ "dataset", "mining", "review" ]
@@ -73,7 +73,7 @@ target-version = "py311"
 line-length = 79
 
 [tool.bumpversion]
-current_version = "0.6.1"
+current_version = "0.6.2"
 commit = true
 pre_commit_hooks = [
   "poetry lock",
