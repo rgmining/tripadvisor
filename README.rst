@@ -1,3 +1,6 @@
+.. important::
+   Unfortunately, this dataset is no longer accessible.
+
 Trip Advisor Dataset Loader
 ===========================
 
@@ -7,8 +10,8 @@ Trip Advisor Dataset Loader
 
 For the `Review Graph Mining project <https://github.com/rgmining>`__,
 this package provides a loader of the `Trip Advisor
-dataset <https://www.cs.virginia.edu/~hw5x/dataset.html>`__ provided by `Dr.
-Wang <http://www.cs.virginia.edu/~hw5x/>`__.
+dataset <https://coai.cs.tsinghua.edu.cn/hw-ai/dataset.html>`__ provided by `Dr.
+Wang <https://coai.cs.tsinghua.edu.cn/hw-ai/>`__.
 
 Installation
 ------------
@@ -67,14 +70,14 @@ The authors of the Trip Advisor dataset, which this software imports,
 requires to cite the following papers when you publish research papers
 using this package:
 
--  `Hongning Wang <http://www.cs.virginia.edu/~hw5x/>`__, `Yue
+-  `Hongning Wang <https://coai.cs.tsinghua.edu.cn/hw-ai/>`__, `Yue
    Lu <https://www.linkedin.com/in/yue-lu-80a6a549>`__, and `ChengXiang
    Zhai <http://czhai.cs.illinois.edu/>`__, "Latent Aspect Rating
    Analysis without Aspect Keyword
    Supervision,"
    In Proc. of the 17th ACM SIGKDD Conference on Knowledge Discovery and
    Data Mining (KDD'2011), pp.618-626, 2011;
--  `Hongning Wang <http://www.cs.virginia.edu/~hw5x/>`__, `Yue
+-  `Hongning Wang <https://coai.cs.tsinghua.edu.cn/hw-ai/>`__, `Yue
    Lu <https://www.linkedin.com/in/yue-lu-80a6a549>`__, and `Chengxiang
    Zhai <http://czhai.cs.illinois.edu/>`__, "Latent Aspect Rating
    Analysis on Review Text Data: A Rating Regression
